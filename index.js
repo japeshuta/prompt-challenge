@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/endpoint', async (req, res) => {
   const { apiKey, postPrompt, prePrompt,tests} = req.body;
-  const prompt = `${prePrompt} ${tests.testConditions[0].variable}\n\n ${postPrompt}`;
+  const prompt = `${prePrompt} ${tests[0].testConditions[0].variable}\n\n ${postPrompt}`;
 
   const configuration = new Configuration({
     apiKey: apiKey,

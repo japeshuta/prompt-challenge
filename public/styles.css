@@ -3,8 +3,8 @@
     --primary-color: #000033;
     --secondary-color: #330066;
     --tertiary-color: #660099;
-    --quaternary-color: #9900cc;
-    --quinary-color: #cc00ff;
+    --quaternary-color: #00becc69;
+    --quinary-color: #6d3700;
 }
 
 @keyframes gradient {
@@ -119,3 +119,6 @@ input:focus, button:focus {
 #grid > div.incorrect-answer {
     background-color: darkred;
     animation: change-color 1s ease-in-out;
+}
+
+#question {margin: 20px 0 20px 0; text-align:left;}

@@ -43,7 +43,7 @@ async function sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge) 
   document.getElementById('beforeText').addEventListener('input', updatePreviewText);
   document.getElementById('afterText').addEventListener('input', updatePreviewText);
   
-  const animalChallenge = {
+  const animalChallenge = [{
     question: 'Is the following animal a meat eater? If meat eater, output TRUE. If not a meat eater, output FALSE.',
     testConditions: [
       {
@@ -67,7 +67,8 @@ async function sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge) 
         answer:true
       }
     ]
-  };
+  },
+];
   
   document.getElementById('apiKey').addEventListener('blur', function(e) {
     localStorage.setItem('apiKey', e.target.value);
@@ -90,15 +91,17 @@ async function sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge) 
   window.onload = function() {
     // Select the grid
     const grid = document.getElementById('grid');
-  
+    // Select Question
+    const question = document.getElementById('question');
+    question.innerText = animalChallenge[0].question
     // Get all the children divs
     const divs = Array.from(grid.children);
   
     // Start the counter after the headers
     let counter = 4;
-  
+    
     // Iterate over testConditions
-    animalChallenge.testConditions.forEach((testCondition, i) => {
+    animalChallenge[0].testConditions.forEach((testCondition, i) => {
       // The div index for variable for each test condition
       const variableDivIndex = counter + 1;
       const answerDivIndex = counter + 2;
