@@ -7,9 +7,10 @@
 <div class="body-container">
   <div id="left-panel">
         <input id="apiKey" type="text" placeholder="Enter your API Key">
+        <div id="question"></div>
         <input id="beforeText" type="text" placeholder="Before Text">
         
-        <div id="challenge">Variable</div>
+        <div id="challenge">${variable}</div>
         <input id="afterText" type="text" placeholder="After Text">
     <div id="previewText"></div>
         <button id="submit">Submit</button>
@@ -27,7 +28,7 @@
             <div>1</div>
             <div>Variable 1</div>
             <div>Answer 1</div>
-            <div>Your Answer 1</div>
+            <div id="answer1">Your Answer 1</div>
 <!--
             <div>2</div>
             <div>Variable 2</div>

@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/endpoint', async (req, res) => {
-  const { apiKey, postPrompt, prePrompt } = req.body;
-  const prompt = prePrompt + "\n\n" + postPrompt;
+  const { apiKey, postPrompt, prePrompt,tests} = req.body;
+  const prompt = `${prePrompt} ${tests.testConditions[0].variable}\n\n ${postPrompt}`;
 
   const configuration = new Configuration({
     apiKey: apiKey,
@@ -39,7 +39,7 @@ app.post('/endpoint', async (req, res) => {
     });
 
     if (response.data && response.data.choices && response.data.choices.length > 0) {
-      res.send(`Response: ${response.data.choices[0].text.trim()}`);
+      res.send(response.data.choices[0].text.trim());
     } else {
       res.send('No response from OpenAI');
     }

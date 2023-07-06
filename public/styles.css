@@ -100,3 +100,22 @@ input:focus, button:focus {
         width: 100%;
     }
 }
+
+.correct-answer {
+    background-color: green;
+    transition: background-color 1s ease;
+  }
+  
+  .incorrect-answer {
+    background-color: darkred;
+    transition: background-color 1s ease;
+  }
+
+  #grid > div.correct-answer {
+    background-color: green;
+    animation: change-color 1s ease-in-out;
+}
+
+#grid > div.incorrect-answer {
+    background-color: darkred;
+    animation: change-color 1s ease-in-out;

@@ -1,11 +1,12 @@
 // Add an async function to make the API call
-async function sendAnswerToServer(apiKey, beforeText,afterText) {
+async function sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge) {
     const url = 'http://localhost:3000/endpoint'; // Replace with your server endpoint URL
     
     const data = {
       apiKey: apiKey,
       prePrompt: beforeText,
-      postPrompt: afterText
+      postPrompt: afterText,
+      tests: animalChallenge
     };
   
     try {
@@ -19,7 +20,8 @@ async function sendAnswerToServer(apiKey, beforeText,afterText) {
   
       if (response.ok) {
         const message = await response.text();
-              document.getElementById('response').innerText = message;
+              document.getElementById('answer1').textContent = message;
+
         console.log('Answer sent to the server successfully.');
       } else {
         console.log('Failed to send the answer to the server.');
@@ -33,7 +35,7 @@ async function sendAnswerToServer(apiKey, beforeText,afterText) {
     var beforeText = document.getElementById('beforeText').value;
     var challengeSentence = document.getElementById('challenge').innerText;
     var afterText = document.getElementById('afterText').value;
-    var previewText = `${beforeText} ${challengeSentence} ${afterText}`;
+    var previewText = `${beforeText} ${challengeSentence} \n\n ${afterText}`;
   
     document.getElementById('previewText').innerText = previewText;
   }
@@ -60,7 +62,10 @@ async function sendAnswerToServer(apiKey, beforeText,afterText) {
         variable: 'Giraffe',
         answer: false
       },
-      // Add more test conditions here
+      {
+        variable:'trex',
+        answer:true
+      }
     ]
   };
   
@@ -79,7 +84,7 @@ async function sendAnswerToServer(apiKey, beforeText,afterText) {
     console.log(`API Key: ${apiKey}, Answer: ${answer}`);
   
     // Make a call to your API with the answer and API Key here
-    sendAnswerToServer(apiKey, beforeText,afterText);
+    sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge);
   });
   
   window.onload = function() {
