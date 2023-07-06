@@ -1,11 +1,12 @@
-
 :root {
-    --primary-color: #000033;
-    --secondary-color: #330066;
-    --tertiary-color: #660099;
-    --quaternary-color: #00becc69;
-    --quinary-color: #6d3700;
+    --primary-color: #00001a;
+    --secondary-color: #1a002b;
+    --tertiary-color: #2b004c;
+    --quaternary-color: #004c4c4c;
+    --quinary-color: #332100;
 }
+
+
 
 @keyframes gradient {
     0% {
@@ -18,17 +19,18 @@
         background-position: 0% 50%;
     }
 }
-body {
 
+body {
     background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--quaternary-color), var(--quinary-color));
     color: white;
     font-size: 1.5em;
-    animation: gradient 15s ease infinite;
+    animation: gradient 30s ease infinite;
     background-size: 400% 400%;
     padding: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Monospace', sans-serif;
     text-align: center;
 }
+
 .body-container {
     display: flex;
 }
@@ -40,13 +42,15 @@ body {
 }
 
 input, button {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Monospace', sans-serif;
     border: none;
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 20px;
     transition: all 0.3s ease-out;
+    color: #ccc;
+    background-color: #1a1a1a;
 }
 
 input:focus, button:focus {
@@ -54,13 +58,13 @@ input:focus, button:focus {
 }
 
 #apiKey, #beforeText, #afterText {
-    background-color: #333;
+    background-color: #1a1a1a;
     color: #ccc;
 }
 
 #challenge {
     color: #ccc;
-    background-color: #333;
+    background-color: #1a1a1a;
     padding: 20px;
     margin-bottom: 20px;
     font-size: 1em;
@@ -69,14 +73,14 @@ input:focus, button:focus {
 #previewText {font-size: 0.8em; margin-bottom:20px; text-align: left;}      
 
 #submit {
-    background-color: #666;
+    background-color: #333;
     color: #fff;
     cursor: pointer;
     font-size: 1.5em;
 }
 
 #submit:hover {
-    background-color: #999;
+    background-color: #555;
     color: #000;
 }
 
@@ -87,10 +91,9 @@ input:focus, button:focus {
     padding: 20px;
     font-size: 1em;
     color: #ccc;
-    background-color: #333;
+    background-color: #1a1a1a;
 }
 
-/* Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
     body {
         font-size: 0.75em;
@@ -101,24 +104,29 @@ input:focus, button:focus {
     }
 }
 
-.correct-answer {
-    background-color: green;
-    transition: background-color 1s ease;
-  }
-  
-  .incorrect-answer {
-    background-color: darkred;
-    transition: background-color 1s ease;
-  }
-
-  #grid > div.correct-answer {
-    background-color: green;
-    animation: change-color 1s ease-in-out;
+.correct-answer, .incorrect-answer {
+    transition: background-color 2s ease;
 }
 
-#grid > div.incorrect-answer {
-    background-color: darkred;
-    animation: change-color 1s ease-in-out;
+.correct-answer {
+    background-color: #006600;
+}
+
+.incorrect-answer {
+    background-color: #660000;
 }
 
 #question {margin: 20px 0 20px 0; text-align:left;}
+
+
+@keyframes color-explosion {
+    0% {background-color: #FF00FF;} /* Purple */
+    25% {background-color: #00FFFF;} /* Aqua */
+    50% {background-color: #FFFF00;} /* Yellow */
+    75% {background-color: #FF9900;} /* Orange */
+    100% {background-color: #33FF33;} /* Neon Green */
+}
+
+.explosion {
+    animation: color-explosion 1s linear infinite;
+}

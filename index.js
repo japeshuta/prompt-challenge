@@ -20,7 +20,51 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
+
 app.post('/endpoint', async (req, res) => {
+  const { apiKey, postPrompt, prePrompt, tests } = req.body;
+  const configuration = new Configuration({
+    apiKey: apiKey,
+  });
+  const openai = new OpenAIApi(configuration);
+
+  try {
+    const results = [];
+
+    for (const test of tests) {
+      for (const condition of test.testConditions) {
+        const prompt = `${prePrompt} ${condition.variable}\n\n ${postPrompt}`;
+
+        const response = await openai.createCompletion({
+          model: "text-davinci-003",
+          prompt: prompt,
+          temperature: 0.7,
+          max_tokens: 60,
+          top_p: 1,
+        });
+
+        if (
+          response.data &&
+          response.data.choices &&
+          response.data.choices.length > 0
+        ) {
+          const result = response.data.choices[0].text.trim();
+          results.push(result);
+        } else {
+          results.push('No response from OpenAI');
+        }
+      }
+    }
+
+    res.send(results);
+  } catch (error) {
+    console.error('Error calling OpenAI API: ', error);
+    res.status(500).send('Error calling OpenAI API');
+  }
+});
+
+
+/*app.post('/endpoint', async (req, res) => {
   const { apiKey, postPrompt, prePrompt,tests} = req.body;
   const prompt = `${prePrompt} ${tests[0].testConditions[0].variable}\n\n ${postPrompt}`;
 
@@ -47,7 +91,7 @@ app.post('/endpoint', async (req, res) => {
     console.error('Error calling OpenAI API: ', error);
     res.status(500).send('Error calling OpenAI API');
   }
-});
+});*/
 
 // Start the server at port 3000
 app.listen(3000, () => {
