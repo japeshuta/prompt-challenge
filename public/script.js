@@ -5,7 +5,7 @@ async function sendAnswerToServer(apiKey, beforeText,afterText,animalChallenge) 
    let submitButton = document.getElementById('submit');
    submitButton.textContent = "Loading...";
    submitButton.disabled = true;
-  const url = 'http://localhost:3000/endpoint'; 
+  const url = 'https://prompt-challenege.onrender.com/endpoint'; 
     
   const data = {
     apiKey: apiKey,
