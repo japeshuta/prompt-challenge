@@ -63,36 +63,6 @@ app.post('/endpoint', async (req, res) => {
   }
 });
 
-
-/*app.post('/endpoint', async (req, res) => {
-  const { apiKey, postPrompt, prePrompt,tests} = req.body;
-  const prompt = `${prePrompt} ${tests[0].testConditions[0].variable}\n\n ${postPrompt}`;
-
-  const configuration = new Configuration({
-    apiKey: apiKey,
-  });
-  const openai = new OpenAIApi(configuration);
-
-  try {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
-      temperature: 0.7,
-      max_tokens: 60,
-      top_p: 1,
-    });
-
-    if (response.data && response.data.choices && response.data.choices.length > 0) {
-      res.send(response.data.choices[0].text.trim());
-    } else {
-      res.send('No response from OpenAI');
-    }
-  } catch (error) {
-    console.error('Error calling OpenAI API: ', error);
-    res.status(500).send('Error calling OpenAI API');
-  }
-});*/
-
 // Start the server at port 3000
 app.listen(3000, () => {
   console.log('App listening on port 3000');

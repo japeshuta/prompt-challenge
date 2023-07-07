@@ -97,8 +97,8 @@ const animalChallenge = [
         answer: '07/23/1995'
       },
       {
-        variable: '20300102',
-        answer: '01/02/2030'
+        variable: '2030 12 july',
+        answer: '07/12/2030'
       },
       {
         variable: 'the second of january 2040',
@@ -139,6 +139,79 @@ const animalChallenge = [
       }
     ]
   }
+  ,{
+  "question": "Change the list of 1 words into format like {apples:{Dogs:“People”}}",
+  "testConditions": [
+    {
+      "variable": "Apples People Dogs",
+      "answer": "{Apples:{Dogs:“People”}}"
+    },
+    {
+      "variable": "Variable-1 Variable-2 Variable-3",
+      "answer": "{Variable-1:{Variable-3:“Variable-2”}}"
+    },
+    {
+      "variable": "myTeam 15 numberOfPeople",
+      "answer": "{myTeam:{numberOfPeople:15}}"
+    },
+    {
+      "variable": "robot true isRed",
+      "answer": "{robot:{isRed:true}}"
+    },
+    {
+      "variable": "Address 1238 Wilmer Street",
+      "answer": "{Address:{Street:“1238 Wilmer”}}"
+    }]},
+    {
+      "question": "Shift the speadsheet cell down and right 1 cell",
+      "testConditions": [
+        {
+          "variable": "f4",
+          "answer":"g5" 
+        },
+        {
+          "variable": "a1",
+          "answer": "b2"
+        },
+        {
+          "variable": "h11",
+          "answer": "i12"
+        },
+        {
+          "variable": "g6",
+          "answer": "h7"
+        },
+        {
+          "variable": "b1",
+          "answer": "c2"
+        }
+    ]
+    },
+    {
+      "question": "Shift the speadsheet cell up and left 1 cell",
+      "testConditions": [
+        {
+          "variable": "b99",
+          "answer":"a98" 
+        },
+        {
+          "variable": "h4",
+          "answer": "g3"
+        },
+        {
+          "variable": "j88",
+          "answer": "i87"
+        },
+        {
+          "variable": "f23",
+          "answer": "e22"
+        },
+        {
+          "variable": "g2",
+          "answer": "f1"
+        }
+    ]
+    }
 ];
 
 
@@ -152,34 +225,9 @@ document.getElementById('apiKey').addEventListener('blur', function(e) {
 const challengeIndex = Math.floor(Math.random() * animalChallenge.length);
 
 window.onload = function () {
-  const grid = document.getElementById('grid');
-  const question = document.getElementById('question');
+  loadChallenge(challengeIndex);
+}
 
-  while (grid.firstChild) {
-    grid.removeChild(grid.firstChild);
-  }
-
-  question.innerText = animalChallenge[challengeIndex].question;
-  animalChallenge[challengeIndex].testConditions.forEach((testCondition, i) => {
-    const variableDivIndex = challengeIndex * animalChallenge[challengeIndex].testConditions.length * 4 + i * 4 + 1;
-    const answerDivIndex = challengeIndex * animalChallenge[challengeIndex].testConditions.length * 4 + i * 4 + 2;
-
-    const testNumberDiv = document.createElement('div');
-    const variableDiv = document.createElement('div');
-    const answerDiv = document.createElement('div');
-    const yourAnswerDiv = document.createElement('div');
-
-    testNumberDiv.textContent = i + 1 + challengeIndex * animalChallenge[challengeIndex].testConditions.length;
-    variableDiv.textContent = testCondition.variable;
-    answerDiv.textContent = testCondition.answer;
-    yourAnswerDiv.id = 'answer' + (i + 1 + challengeIndex * animalChallenge[challengeIndex].testConditions.length);
-
-    grid.appendChild(testNumberDiv);
-    grid.appendChild(variableDiv);
-    grid.appendChild(answerDiv);
-    grid.appendChild(yourAnswerDiv);
-  });
-};
 
 document.getElementById('submit').addEventListener('click', function() {
   var apiKey = localStorage.getItem('apiKey');
@@ -209,6 +257,27 @@ function compareAnswers(challengeIndex) {
       colorRow(i, 'red');
     }
   }
+
+  const testConditions = animalChallenge[challengeIndex].testConditions;
+  let correctAnswers = 0;
+
+  testConditions.forEach((testCondition, i) => {
+    const answerDiv = document.getElementById('answer' + (i + 1 + challengeIndex * testConditions.length));
+    
+    if (answerDiv.textContent == testCondition.answer) {
+      answerDiv.className = 'correct-answer';
+      correctAnswers++;
+    } else {
+      answerDiv.className = 'incorrect-answer';
+    }
+  });
+
+  // If all answers are correct
+  if (correctAnswers == testConditions.length) {
+    playAnimation();
+    resetGame();
+  }
+  
 }
 
 function colorRow(rowIndex, color) {
@@ -219,4 +288,56 @@ function colorRow(rowIndex, color) {
     const divIndex = rowIndex * 4 + i;
     divs[divIndex].style.backgroundColor = color;
   }
+}
+
+function playAnimation() {
+  document.body.classList.add('explosion-one');
+
+  // Remove the class after the animation has played
+  setTimeout(() => {
+    document.body.classList.remove('explosion-one');
+  }, 1000);
+}
+function resetGame() {
+  // Reset the challenge index to a random value
+  challengeIndex = Math.floor(Math.random() * animalChallenge.length);
+
+  // Clear all inputs
+  document.getElementById('beforeText').value = '';
+  document.getElementById('afterText').value = '';
+
+  // Load new challenge
+  loadChallenge(challengeIndex);
+}
+
+
+function loadChallenge(challengeIndex) {
+  const grid = document.getElementById('grid');
+  const question = document.getElementById('question');
+
+  // Clear existing grid elements
+  while (grid.firstChild) {
+    grid.removeChild(grid.firstChild);
+  }
+
+  question.innerText = animalChallenge[challengeIndex].question;
+  animalChallenge[challengeIndex].testConditions.forEach((testCondition, i) => {
+    const variableDivIndex = challengeIndex * animalChallenge[challengeIndex].testConditions.length * 4 + i * 4 + 1;
+    const answerDivIndex = challengeIndex * animalChallenge[challengeIndex].testConditions.length * 4 + i * 4 + 2;
+
+    const testNumberDiv = document.createElement('div');
+    const variableDiv = document.createElement('div');
+    const answerDiv = document.createElement('div');
+    const yourAnswerDiv = document.createElement('div');
+
+    testNumberDiv.textContent = i + 1 + challengeIndex * animalChallenge[challengeIndex].testConditions.length;
+    variableDiv.textContent = testCondition.variable;
+    answerDiv.textContent = testCondition.answer;
+    yourAnswerDiv.id = 'answer' + (i + 1 + challengeIndex * animalChallenge[challengeIndex].testConditions.length);
+
+    grid.appendChild(testNumberDiv);
+    grid.appendChild(variableDiv);
+    grid.appendChild(answerDiv);
+    grid.appendChild(yourAnswerDiv);
+  });
 }
