@@ -128,7 +128,7 @@ input:focus, button:focus {
 }
 
 .explosion {
-    animation: color-explosion 1s linear infinite;
+    animation: color-explosion 5s linear infinite;
 }
 
 .explosion-one {
