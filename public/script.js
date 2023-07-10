@@ -368,7 +368,7 @@ function playAnimation() {
   // Remove the class after the animation has played
   setTimeout(() => {
     document.body.classList.remove('explosion-one');
-  }, 1000);
+  }, 5000);
 }
 function resetGame() {
   // Reset the challenge index to a random value
