@@ -211,6 +211,78 @@ const animalChallenge = [
           "answer": "f1"
         }
     ]
+    },{
+      "question": "Change from men's to women's name version",
+      "testConditions": [
+        {
+          "variable": "George",
+          "answer":"Georgia" 
+        },
+        {
+          "variable": "Felix",
+          "answer": "Felicia"
+        },
+        {
+          "variable": "Claude",
+          "answer": "Claudia"
+        },
+        {
+          "variable": "Alexander",
+          "answer": "Alexandra"
+        },
+        {
+          "variable": "Eric",
+          "answer": "Erica"
+        }
+    ]
+    },{
+      "question": "Animal Sounds",
+      "testConditions": [
+        {
+          "variable": "Sheep",
+          "answer":"Baa" 
+        },
+        {
+          "variable": "Dog",
+          "answer": "Bark"
+        },
+        {
+          "variable": "Horse",
+          "answer": "Neigh"
+        },
+        {
+          "variable": "Cat",
+          "answer": "Moew"
+        },
+        {
+          "variable": "Bird",
+          "answer": "Chirp"
+        }
+    ]
+    },{
+      "question": "How many Legs?",
+      "testConditions": [
+        {
+          "variable": "Dog",
+          "answer":"4" 
+        },
+        {
+          "variable": "Cat",
+          "answer": "4"
+        },
+        {
+          "variable": "Monkey",
+          "answer": "2"
+        },
+        {
+          "variable": "Centipede",
+          "answer": "100"
+        },
+        {
+          "variable": "Octopus",
+          "answer": "8"
+        }
+    ]
     }
 ];
 
