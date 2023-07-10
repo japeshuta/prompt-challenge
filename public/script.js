@@ -252,7 +252,7 @@ const animalChallenge = [
         },
         {
           "variable": "Cat",
-          "answer": "Moew"
+          "answer": "Meow"
         },
         {
           "variable": "Bird",
