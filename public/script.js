@@ -283,7 +283,132 @@ const animalChallenge = [
           "answer": "8"
         }
     ]
+    },{
+      question: 'Arrange the numbers in descending order and then reverse the string',
+      testConditions: [
+        {
+          variable: '3741',
+          answer: '1473'
+        },
+        {
+          variable: '9652',
+          answer: '2596'
+        },
+        {
+          variable: '86421',
+          answer: '12648'
+        },
+        {
+          variable: '12973',
+          answer: '37921'
+        },
+        {
+          variable: '15376',
+          answer: '76531'
+        }
+      ]
+    },
+    {
+      question: 'Reverse the order of letters, then move the last letter to the front',
+      testConditions: [
+        {
+          variable: 'Dolphin',
+          answer: 'Dnihpol'
+        },
+        {
+          variable: 'Elephant',
+          answer: 'Tnahpele'
+        },
+        {
+          variable: 'Butterfly',
+          answer: 'Ylfrettub'
+        },
+        {
+          variable: 'Alligator',
+          answer: 'Arotagilla'
+        },
+        {
+          variable: 'Kangaroo',
+          answer: 'Oooragnak'
+        }
+      ]
+    },
+    {
+      question: 'Shift each number up by 2',
+      testConditions: [
+        {
+          variable: '1234',
+          answer: '3456'
+        },
+        {
+          variable: '4567',
+          answer: '6789'
+        },
+        {
+          variable: '7891',
+          answer: '9013'
+        },
+        {
+          variable: '0123',
+          answer: '2345'
+        },
+        {
+          variable: '2345',
+          answer: '4567'
+        }
+      ]
+    },
+    {
+      question: 'Switch the first and last letters, then reverse the string',
+      testConditions: [
+        {
+          variable: 'Dolphin',
+          answer: 'Dniphlo'
+        },
+        {
+          variable: 'Elephant',
+          answer: 'Etnahple'
+        },
+        {
+          variable: 'Butterfly',
+          answer: 'Bytterflut'
+        },
+        {
+          variable: 'Alligator',
+          answer: 'Arogatilla'
+        },
+        {
+          variable: 'Kangaroo',
+          answer: 'Ooraganak'
+        }
+      ]
+    },
+    {
+      question: 'Create an anagram of the word, then replace vowels with numbers (a=1, e=2, i=3, o=4, u=5)',
+      testConditions: [
+        {
+          variable: 'Cats',
+          answer: '1cts'
+        },
+        {
+          variable: 'Dogs',
+          answer: 'g4ds'
+        },
+        {
+          variable: 'Horse',
+          answer: 'shr2'
+        },
+        {
+          variable: 'Elephant',
+          answer: 'l2ph1nt'
+        },
+        {
+          variable: 'Butterfly',
+          answer: 'b5tt2rfly'
+        }
+      ]
     }
+  
 ];
 
 
