@@ -14,3 +14,6 @@ Preview:
 
 A new challenge is randomly selected everytime the page is refreshed.
 
+<img src="https://github.com/japeshuta/prompt-challenge/assets/54607249/fc132a7c-8715-4f26-a80a-6e78e304da9c">
+
+3 out of 5 correct! Close, but keep trying ;)
