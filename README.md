@@ -12,3 +12,5 @@ The goal of the Prompt Challenge is to use the input ${variable} in your prompt 
 Preview:
 <img src="https://github.com/japeshuta/prompt-challenge/assets/54607249/04ad68df-867b-47da-9399-4d418e5dabf4">
 
+A new challenge is randomly selected everytime the page is refreshed.
+
